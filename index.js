@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 
+const PORT = 8080;
+
 const app = express();
 const memoryDB = {
     datapoints: [],
@@ -12,8 +14,8 @@ app.get('/api/datapoints/all', (req, res) => {
     res.send(memoryDB.datapoints);
 })
 
-app.listen(3000, () => {
-    console.log('APP Started at port 3000');
+app.listen(PORT, () => {
+    console.log(`APP Started at port ${PORT}`);
     generateDatapoints();
 });
 
@@ -24,7 +26,7 @@ const generateDatapoints = () => {
             {
                 id,
                 date: new Date(),
-                power: Math.random() * (1000 - 50) + 1,
+                power: Math.random() * (1499 - 1000) + 1000,
                 device: {
                     id: 1,
                     name: 'Radiator',
